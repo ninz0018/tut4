@@ -18,11 +18,17 @@ $(document).on('submit','#name',function(e){
     l = l.toUpperCase();
     ln = l + ln.slice(1);
 
-    $("#info").html(`<div class="mb-5">
-                        <div class="fs-3 fw-bold">Firstname: ${fn}</div>
-                        <div class="fs-3 fw-bold">Lastname: ${ln}</div> 
-                        <div class="fs-3 fw-bold">Age: ${edad}</div>
-                     </div>`);   
+    if (edad >= 18){
+        $("#info").html(`<div>
+        <div class="fs-3 fw-bold">Firstname: ${fn}</div>
+        <div class="fs-3 fw-bold">Lastname: ${ln}</div> 
+        <div class="fs-3 fw-bold">Age: ${edad}</div>
+        </div>`);   
+    }else if(edad <=0){
+        alert("Invalid Age");
+    }else {
+        alert("Minor Age");
+    }
 
 })
 $(document).on('click','#clr',function(e){
@@ -30,4 +36,9 @@ $(document).on('click','#clr',function(e){
     $("#fnames").val("");
     $("#snames").val("");
     $("#edad").val("");
+})
+$(document).on('click','#clrdt',function(e){
+    e.preventDefault();
+    $("#info").html("");
+
 })
